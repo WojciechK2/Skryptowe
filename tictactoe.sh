@@ -276,9 +276,8 @@ do
 			RUCH_KOMPUTERA="0";
 		else 
 			zmiana_gracza
-			save
 		fi
-		
+			save	
 		if [ $LICZBA_TUR -lt "8" ]; then
 			LICZBA_TUR=$((LICZBA_TUR + 1));
 		else 
