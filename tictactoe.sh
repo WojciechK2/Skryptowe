@@ -3,6 +3,7 @@
 PLANSZA=("0" "0" "0" "0" "0" "0" "0" "0" "0");
 KONIEC="0";
 GRACZ="1";
+RUCH_KOMPUTERA="0";
 WYBOR_GRACZA=;
 LICZBA_TUR=0;
 DWOCH_GRACZY=0;
@@ -26,6 +27,56 @@ function zmiana_gracza {
 	else
 		GRACZ="1";
 	fi
+}
+
+function wybor_trybu_gry {
+	
+	while [ "1" ]
+			save_input=;
+		do
+			echo "Gramy we dwoch, czy z komputerem? (d/k)";
+			read save_input;
+			
+			case $save_input in
+			
+			"d")
+				echo "Wybrano opcje -> dwoch graczy";
+				DWOCH_GRACZY="1";
+				break
+				;;
+			
+			"k")
+				echo "Gram z komputerem";
+				DWOCH_GRACZY="0";
+				break
+				;;
+			
+			*)
+			
+				echo "Niewlasciwy input";
+				continue
+				;;
+			
+			esac
+		
+		done
+}
+
+function tura_komputera {
+
+	while [ "1" ]
+
+	do
+	WYBOR_KOMPUTERA=$[ $RANDOM % 8 ];
+	
+		if [ ${PLANSZA[$WYBOR_KOMPUTERA]} == "0" ]; then
+			PLANSZA[$WYBOR_KOMPUTERA]="2";
+			czy_wygral;
+			break;
+		fi
+	
+	done
+	
 }
 
 #save string to jedna linia zapisujaca gracz:pole1:pole2....
@@ -106,7 +157,11 @@ function czy_wygral {
 		if [ ${PLANSZA[$i]} -ne "0" ]; then
 			local A=${PLANSZA[$i]}
 			if [ ${PLANSZA[$i + 1]} == $A ] && [ ${PLANSZA[$i + 2]} == $A ]; then
-				echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+				if [ $RUCH_KOMPUTERA -eq "1" ]; then
+					echo "KOMPUTER ZWYCIEZYL";
+				else
+					echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+				fi
 				KONIEC="1";
 				wyswietl;
 				break
@@ -122,7 +177,11 @@ function czy_wygral {
 		if [ ${PLANSZA[$i]} -ne "0" ]; then
 			local A=${PLANSZA[$i]}
 			if [ ${PLANSZA[$i + 3]} == $A ] && [ ${PLANSZA[$i + 6]} == $A ]; then
-				echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+				if [ $RUCH_KOMPUTERA -eq "1" ]; then
+					echo "KOMPUTER ZWYCIEZYL";
+				else
+					echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+				fi
 				KONIEC="1";
 				wyswietl;
 				break
@@ -136,7 +195,11 @@ function czy_wygral {
 	#czy nie ".", 0, 0 + 4, 0 + 8
 	if [ ${PLANSZA[0]} -ne "0" ] && [ ${PLANSZA[4]} -ne "0" ] && [ ${PLANSZA[8]} -ne "0" ]; then
 		if [ ${PLANSZA[0]} -eq ${PLANSZA[4]} ] && [ ${PLANSZA[4]} -eq ${PLANSZA[8]} ] && [ ${PLANSZA[0]} -eq ${PLANSZA[8]} ]; then
-			echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+			if [ $RUCH_KOMPUTERA -eq "1" ]; then
+				echo "KOMPUTER ZWYCIEZYL";
+			else
+				echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+			fi
 			KONIEC="1";
 			wyswietl;
 		fi
@@ -145,7 +208,11 @@ function czy_wygral {
 	#czy nie ".", 2, 4, 6	
 	if [ ${PLANSZA[2]} -ne "0" ] && [ ${PLANSZA[4]} -ne "0" ] && [ ${PLANSZA[6]} -ne "0" ]; then
 		if [ ${PLANSZA[2]} -eq ${PLANSZA[4]} ] && [ ${PLANSZA[4]} -eq ${PLANSZA[6]} ] && [ ${PLANSZA[2]} -eq ${PLANSZA[6]} ]; then
-			echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+			if [ $RUCH_KOMPUTERA -eq "1" ]; then
+				echo "KOMPUTER ZWYCIEZYL";
+			else
+				echo "GRACZ: " "$GRACZ" "ZWYCIEZYL";
+			fi
 			KONIEC="1";
 			wyswietl;
 		fi
@@ -162,6 +229,7 @@ echo "CTRL+C zeby wyjsc."
 #main game loop
 
 load
+wybor_trybu_gry
 
 while [ $KONIEC -eq "0" ]
 do
@@ -200,16 +268,23 @@ do
 	
 	echo "Liczba tur: " $LICZBA_TUR;
 	
-	if [ $LICZBA_TUR -lt "8" ]; then
-		LICZBA_TUR=$((LICZBA_TUR + 1));
-	else 
-		KONIEC="1";
-		echo "BRAK MOZLIWYCH RUCHOW, REMIS"
-	fi
-	
 	if [ $KONIEC -eq "0" ]; then
-		zmiana_gracza
-		save
+	
+		if [ $DWOCH_GRACZY -eq "0" ]; then
+			RUCH_KOMPUTERA="1";
+			tura_komputera
+			RUCH_KOMPUTERA="0";
+		else 
+			zmiana_gracza
+			save
+		fi
+		
+		if [ $LICZBA_TUR -lt "8" ]; then
+			LICZBA_TUR=$((LICZBA_TUR + 1));
+		else 
+			KONIEC="1";
+			echo "BRAK MOZLIWYCH RUCHOW, REMIS"
+		fi
 	fi
 done
 
