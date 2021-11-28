@@ -5,7 +5,7 @@ KONIEC="0";
 GRACZ="1";
 RUCH_KOMPUTERA="0";
 WYBOR_GRACZA=;
-LICZBA_TUR=0;
+LICZBA_TUR="0";
 DWOCH_GRACZY=0;
 
 #obok planszy wyswietla sie referencja, zeby wiedziec ktore indeksy sa ktore
@@ -64,6 +64,8 @@ function wybor_trybu_gry {
 
 function tura_komputera {
 
+	echo "Liczba tur (komputer): " $LICZBA_TUR;
+
 	while [ "1" ]
 
 	do
@@ -80,6 +82,8 @@ function tura_komputera {
 }
 
 #save string to jedna linia zapisujaca gracz:pole1:pole2....
+#funkcja nie zapisuje tury przed komputerem (zawsze po, moze sie wywrucic jesli proces zostanie zabity w trakcie gdy komputer losuje liczbe)
+#malo prawdopodobne ale nie obslugiwane, save jest wtedy (2 tury wstecz -> ostatnia gracza)
 function save {
 	save_string="";	
 	
@@ -122,6 +126,10 @@ function load {
 				
 				GRACZ="${my_array[0]}";
 				LICZBA_TUR="${my_array[1]}";
+				
+				echo "Liczba tur: " $LICZBA_TUR;
+				echo "Gracz: " $GRACZ;
+				
 				break
 				;;
 			
@@ -266,24 +274,29 @@ do
 	done
 	czy_wygral
 	
-	echo "Liczba tur: " $LICZBA_TUR;
-	
 	if [ $KONIEC -eq "0" ]; then
 	
+		if [ $LICZBA_TUR -lt "8" ]; then #liczymy od 0 do 8 -> 9 wartosc, tyle ile pol
+			echo "Liczba tur: " $LICZBA_TUR;
+			LICZBA_TUR=$((LICZBA_TUR + 1));
+		else
+			echo "Liczba tur: " $LICZBA_TUR; 
+			KONIEC="1";
+			echo "BRAK MOZLIWYCH RUCHOW, REMIS"
+		fi
+		
 		if [ $DWOCH_GRACZY -eq "0" ]; then
 			RUCH_KOMPUTERA="1";
 			tura_komputera
 			RUCH_KOMPUTERA="0";
+			LICZBA_TUR=$((LICZBA_TUR + 1));
 		else 
 			zmiana_gracza
 		fi
-			save	
-		if [ $LICZBA_TUR -lt "8" ]; then
-			LICZBA_TUR=$((LICZBA_TUR + 1));
-		else 
-			KONIEC="1";
-			echo "BRAK MOZLIWYCH RUCHOW, REMIS"
-		fi
+		
+		save
 	fi
+	
+
 done
 
