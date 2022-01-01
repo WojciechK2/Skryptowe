@@ -1,0 +1,36 @@
+Chatbot przygotowany w oparciu o RASA Open Source.
+
+Przeznaczeniem bota jest obsługa informacji związanych z działaniem restauracji.
+
+Funkcjonalność:
+ - pozdrowienia, pożegnania ("Hi", "Hello", "Bye"...)
+ - upewnienie rozmówcy, że rozmawia z botem ("Am I talking to a bot?"/"Who are you?"...)
+ - przedstawienie się i pokazanie zakresu obowiązków ("How can you help?"...)
+ - zapytania o godziny otwarcia restauracji (ogólne -> zwraca cały podział godzin, szczegółowe: pytanie o konkretny dzień tygodnia lub o konkretny dzien tygodnia + godzina) ("Are you open on Mondays at 9?") -> pobrane z "openinghours.json"
+ - zapytania o menu ("What's in menu?") -> pobrane z "menu.json"
+ - możliwe jest przyjęcie zamowienia wraz z walidacją czy wybrana pozycja znajduje się w menu (ale nie powiedzialbym, że działa poprawnie)
+ 
+Integracja z Discordem
+ Bot wymaga edycji pliku .env, w którym trzeba umieścić wskazane wartości:
+	DISCORD_TOKEN=<TOKEN>
+	DISCORD_GUILD=<Servers name in which bot is meant to be operating>
+ Nie chcę wrzucać credentiali na publicznie dostępne repo.
+
+Wywołanie Bota odbywa się poprzez wsponienie (mention) o nim na glownym kanale serwera:
+	@<Bot_name> <message> 
+
+ Wymiana informacji z RASA odbywa się za pomocą funkcji: RASA_messageAPICall() która przesyla wartości wiadomości do RASY -> REST API, POST Method
+
+W pliku /model/actions.py znajdują sie Custom Actions potrzebne do obslugi bota.
+
+Komendy jak to wszystko uruchomić w calości:
+
+	1. RASA action server
+	python3 -m rasa_sdk --actions actions
+
+	2. RASA
+	rasa run --enable-api
+	
+	3. python3 bot.py	
+
+Z plików RASA nie przesyłam tylko modelu, z racji tego, że wszystkie pliki potrzebne do treningu są już udostępnione.
