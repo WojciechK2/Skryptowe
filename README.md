@@ -7,3 +7,7 @@ tictactoe.sh -> bash, wymagania na 5.0.
 - zapis "save" do pliku "save.txt" pozwalający na wczyatnie ostatniej tury po restarcie programu (funkcja save wykonuje sie automatycznie po kazdej turze)
 format gracz:liczbatur:pole1:pole2....
 - możliwa jest gra z komputerem, (funkcja RANDOM)
+
+#Chatbot
+
+Instrukcje do chatbota, opis jego działania i wykorzystane metody znajdują się w pliku "Instructions.txt"
