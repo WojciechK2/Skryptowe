@@ -13,3 +13,4 @@ format gracz:liczbatur:pole1:pole2....
 #Chatbot
 
 Instrukcje do chatbota, opis jego działania i wykorzystane metody znajdują się w pliku "Instructions.txt"
+Bot testowany był na moim serwerze, proszę dać mi znać jeśli czegoś brakuje.
