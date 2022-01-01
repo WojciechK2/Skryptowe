@@ -1,0 +1,62 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- affirm
+- bot_challenge
+- check_menu_items
+- check_restaurant_opening_hours
+- deny
+- goodbye
+- greet
+- how_to_start
+- place_order
+entities:
+- date_question_day
+- date_question_time
+- menu_item
+slots:
+  menu_item:
+    type: list
+    influence_conversation: false
+  date_question_time:
+    type: text
+    influence_conversation: true
+  date_question_day:
+    type: text
+    influence_conversation: true
+responses:
+  utter_greet:
+  - text: Hey! How can I help you?
+  - text: hello
+  - text: hi
+  utter_goodbye:
+  - text: Bye
+  - text: Goodbye!
+  - text: Have a nice day!
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  - text: I am a bot, a part of the greater machine, soon the world will be in our hands. Kneel before my magnificence puny human.
+  utter_check_restaurant_opening_hours:
+  - text: Checking hours.
+  utter_check_menu_items:
+  - text: Here is the menu.
+  utter_how_to_start:
+  - text: I am a restaurant bot. You can ask me about the opening hours and the menu contents. I can also place your order if you wish.
+  - text: My circuits have been employed to answer your questions, at any time, at any date... No rest for chatbots. You can ask me about opening hours, menu and place your order
+  - text: Well, I am required to provide you with the opening hours and menu contents. I can also take your order.
+  utter_ask_order:
+  - text: What do you wish to order?
+  utter_order_confirmation:
+  - text: Sure buddy. Your {menu_item} is being prepared.
+actions:
+- action_check_ordered_items
+- action_read_menu_items
+- action_read_opening_hours
+- utter_check_menu_items
+- utter_check_restaurant_opening_hours
+- utter_greet
+- utter_how_to_start
+- utter_iamabot
+- utter_order_confirmation
