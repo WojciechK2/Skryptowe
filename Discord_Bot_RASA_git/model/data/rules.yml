@@ -1,0 +1,41 @@
+version: "2.0"
+
+rules:
+
+- rule: Always say hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Display instructions when asked
+  steps:
+  - intent: how_to_start
+  - action: utter_how_to_start
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  
+- rule: Search opening_hours.json when user asks for opening hours
+  steps:
+  - intent: check_restaurant_opening_hours
+  - action: utter_check_restaurant_opening_hours
+  - action: action_read_opening_hours
+  
+- rule: Search menu.json for all available items
+  steps:
+  - intent: check_menu_items
+  - action: utter_check_menu_items
+  - action: action_read_menu_items
+
+#- rule: Activate form
+#  steps:
+#  - intent: place_order
+#  - action: restaurant_form
+#  - active_loop: restaurant_form

@@ -1,0 +1,152 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - who are you
+- intent: check_restaurant_opening_hours
+  examples: |
+    - are you open?
+    - opening hours
+    - What are the opening hours?
+    - what are the opening hours
+    - are you open on [Mondays](date_question_day)?
+    - are you open on [Monday](date_question_day)?
+    - are you open on [Tuesday](date_question_day)?
+    - are you open on [Tuesdays](date_question_day)?
+    - are you open on [Wednesday](date_question_day)?
+    - are you open on [Wednesdays](date_question_day)?
+    - are you open on [Thursdays](date_question_day)?
+    - are you open on [Thursday](date_question_day)?
+    - are you open on [Friday](date_question_day)?
+    - are you open on [Fridays](date_question_day)?
+    - are you open on [Saturday](date_question_day)?
+    - are you open on [Saturdays](date_question_day)?
+    - are you open on [Sunday](date_question_day)?
+    - are you open on [Sundays](date_question_day)?
+    - are you open on [Mondays](date_question_day) at [7](date_question_time)?
+    - are you open on [Monday](date_question_day) at [7](date_question_time)?
+    - are you open on [Tuesday](date_question_day) at [7](date_question_time)?
+    - are you open on [Tuesdays](date_question_day) at [7](date_question_time)?
+    - are you open on [Wednesday](date_question_day) at [7](date_question_time)?
+    - are you open on [Wednesdays](date_question_day) at [7](date_question_time)?
+    - are you open on [Thursdays](date_question_day) at [7](date_question_time)?
+    - are you open on [Thursday](date_question_day) at [7](date_question_time)?
+    - are you open on [Friday](date_question_day) at [7](date_question_time)?
+    - are you open on [Fridays](date_question_day) at [7](date_question_time)?
+    - are you open on [Saturday](date_question_day) at [7](date_question_time)?
+    - are you open on [Saturdays](date_question_day) at [7](date_question_time)?
+    - are you open on [Sunday](date_question_day) at [7](date_question_time)?
+    - are you open on [Sundays](date_question_day) at [7](date_question_time)?
+    - are you open on [monday](date_question_day) at [6](date_question_time)
+    - are you open on [Monday](date_question_day)
+    - what hours are you open on [Monday](date_question_day)
+    - What Hours are you open on [Sunday](date_question_day)
+- intent: check_menu_items
+  examples: |
+    - what are you offering?
+    - what is in menu
+    - menu
+    - What's in the menu chef?
+    - What's in menu chief?
+- intent: how_to_start
+  examples: |
+    - how do I start?
+    - what are the options?
+    - what can you do for me?
+    - how do I check
+    - what can you halp me with
+    - what can you help me with
+- intent: place_order
+  examples: |
+    - Can I have [Lasagne](menu_item)
+    - I would like to order [Pizza](menu_item)
+    - I want [Hot-dog](menu_item)
+    - Give me [Burger](menu_item)
+    - [Spaghetti Carbonara](menu_item)
+    - [Tiramisu](menu_item)
+    - I want [Burger](menu_item), [Hot-dog](menu_item) and [Lasagne](menu_item)
+    - Can I have [Burger](menu_item) and [Hot-dog](menu_item) and [Spaghetti Carbonara](menu_item) please
+    - I want [burger](menu_item)
+    - I want [dynamite](menu_item)
+    - Can I have a [pizza](menu_item)
+    - can I have [macaroni](menu_item)
+    - can I have a [Hot-Dog](menu_item)
+- synonym: Monday
+  examples: |
+    - Monday
+    - Mondays
+- synonym: Tuesday
+  examples: |
+    - Tuesday
+    - Tuesdays
+- synonym: Wednesday
+  examples: |
+    - Wednesday
+    - Wednesdays
+- synonym: Thursday
+  examples: |
+    - Thursday
+    - Thursdays
+- synonym: Friday
+  examples: |
+    - Friday
+    - Fridays
+- synonym: Saturday
+  examples: |
+    - Saturday
+    - Saturdays
+- synonym: Sunday
+  examples: |
+    - Sunday
+    - Sundays
+
+

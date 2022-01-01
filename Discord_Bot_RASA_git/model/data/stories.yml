@@ -1,0 +1,43 @@
+version: "2.0"
+
+stories:
+
+- story: how do I start
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: how_to_start
+  - action: utter_how_to_start
+
+- story: checking opening hours
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: check_restaurant_opening_hours
+  - action: utter_check_restaurant_opening_hours
+  - action: action_read_opening_hours
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: checking menu items
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: check_menu_items
+  - action: utter_check_menu_items
+  - action: action_read_menu_items
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: Placing an order
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: place_order
+    entities:
+    - menu_item: Burger
+  - slot_was_set:
+    - menu_item: 
+      - Burger
+  - action: action_check_ordered_items
+
