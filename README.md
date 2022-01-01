@@ -12,5 +12,8 @@ format gracz:liczbatur:pole1:pole2....
 
 #Chatbot
 
+Rozwiązania do zadań z ćwiczeń znajdują się w folderze Python_Bot_Excercises.
+Nie ma tam nic specjalnie nowego, opierają się głównie na pliku Solutions.pdf
+
 Instrukcje do chatbota, opis jego działania i wykorzystane metody znajdują się w pliku "Instructions.txt"
 Bot testowany był na moim serwerze, proszę dać mi znać jeśli czegoś brakuje.
