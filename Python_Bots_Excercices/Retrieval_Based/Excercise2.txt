@@ -1,0 +1,42 @@
+The solution to this excercise would be to extend the domain.yml file with folowing declarations:
+
+- intent:
+  - change_status
+  
+- entity:
+  - status
+  
+- slot:
+  - status:
+    - type: text
+    (probably influencing the conversation)
+    
+In nlu.yml file a new training patterns should be added, those could be:
+
+- intent: change_status
+  examples: |
+    - the candidate [failed](status) the interview
+    - the candidate [passed](status) the interview
+    - the candidate was [accepted](status)
+    - the candidate was [declined](status)
+    - the interview went [badly](status)
+    - the interview went [great](status)
+    
+which then can be used for training the model
+
+Additionaly a synonyms can be created to keep the model consistent
+
+- synonym: failed
+  examples: |
+  - declined
+  - failed
+  - bad
+  - badly
+
+- synonym: passed
+  examples: |
+  - passed
+  - accepted
+  - great
+  
+Or maybe not
