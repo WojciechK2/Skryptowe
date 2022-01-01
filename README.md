@@ -1,6 +1,8 @@
 # Skryptowe
 Przedmiot jezyki skryptowe
 
+Wiem, będe musiał uprzątnąć to repozytorium.
+
 tictactoe.sh -> bash, wymagania na 5.0.
 
 - gra dwóch graczy,
