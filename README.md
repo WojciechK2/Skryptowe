@@ -41,4 +41,6 @@ Jak i (nieudane) podejścia z przełączaniem scen (niestety są osobno):
 http://www.origin.wojciech.fun/upload_game/Mar0_2/ -> scena A
 http://www.origin.wojciech.fun/upload_game/Mar0_3/ -> scena B
 
+W tych przypadkach gra się kończy gdy dojdziemy do drzwi na końcu levela. (następuje pauza)
+
 Może kiedyś to naprawię, bo wygląda głównie na problem kompozycji kodu.
