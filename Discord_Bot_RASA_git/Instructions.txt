@@ -1,3 +1,6 @@
+#
+#Dodaję informację, wykożystana wersja RASA to 2.8, gdyż taka instalowała się z udostępnionego w zadaniu linku (pip3 install rasa-x -i https://pypi.rasa.com/simple) 
+
 Chatbot przygotowany w oparciu o RASA Open Source.
 
 Przeznaczeniem bota jest obsługa informacji związanych z działaniem restauracji.
