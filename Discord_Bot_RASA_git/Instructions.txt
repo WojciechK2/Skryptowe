@@ -29,6 +29,7 @@ W pliku /model/actions.py znajdują sie Custom Actions potrzebne do obslugi bota
 Komendy jak to wszystko uruchomić w calości:
 
 	1. RASA action server
+	(inside of model folder)
 	python3 -m rasa_sdk --actions actions
 
 	2. RASA
