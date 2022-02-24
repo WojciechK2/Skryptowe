@@ -33,6 +33,7 @@ Komendy jak to wszystko uruchomić w calości:
 	python3 -m rasa_sdk --actions actions
 
 	2. RASA
+	(inside of model folder)
 	rasa run --enable-api
 	
 	3. python3 bot.py	
